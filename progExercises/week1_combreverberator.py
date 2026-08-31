@@ -94,6 +94,7 @@ def reverb_exercise():
     ax.set_title('Magnitude responce')
     ax.set_ylabel(r'$|H\left(e^{j\omega}\right)|$')
     ax.set_xlabel(r'$\omega$')
+    fig.savefig('figs/w1_reverbMag.pdf')
     plt.show()
 
 
