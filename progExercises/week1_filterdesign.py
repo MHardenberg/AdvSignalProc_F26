@@ -51,14 +51,19 @@ def main():
     ax1.set_ylabel("Group delay")
     ax1.set_xlabel(r"$\omega$ ($\pi$)")
 
+    xticks = [np.pi * x/4 for x in range(1, 4)]
+    xlabels = [f'${x/np.pi:1.2f}\\pi$' for x in xticks]
+    ax0.set_xticks(xticks, labels=xlabels)
+    ax1.set_xticks(xticks, labels=xlabels)
+
     for order in (1, 2, 4, 8):
         num, denom = sg.iirfilter(order, wall_stop, btype='bandstop')
         frq_rsp = filter(frq, num, denom)
         _, grpdelay = sg.group_delay((num, denom), w=frq)
-        ax0.plot(frq/np.pi, np.abs(frq_rsp),
+        ax0.plot(frq, np.abs(frq_rsp),
                  label=f"O = {order}", lw=2)
 
-        ax1.plot(frq/np.pi, grpdelay,
+        ax1.plot(frq, grpdelay,
                  label=f"O = {order}", lw=2)
     # plot_lollipop(ax, imp, ts, color="k", label="impulse")
     # plot_lollipop(ax,  rsp, ts, color="r", label="impulse response")
