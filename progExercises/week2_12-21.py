@@ -48,7 +48,6 @@ def downsample(xn: np.ndarray, D: int, k: int = 0) -> np.ndarray:
 
 def decimate(xn: np.ndarray, D: int) -> np.ndarray:
     cutoff = .8/D
-
     yn = cheby_lowpass_filter(xn, cutoff, 1)
     return downsample(yn, D, 1)
 
