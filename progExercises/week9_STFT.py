@@ -38,15 +38,12 @@ def dtft(xn: np.ndarray, fs: float = 1.):
     meanfreqs = np.average(freqs, weights=np.abs(
         stft) / np.max(np.abs(stft)), axis=0)
 
-    # stdfreqs = np.std(np.abs(stft), axis=0)
     extend = list(SFT.extent(N))
 
     img = ax.imshow(np.abs(stft), origin='lower',
                     aspect='auto', extent=extend, cmap='Reds')
     fig.colorbar(img, label="Magnitude $|S_x(t, f)|$")
 
-    # ax.errorbar(ts, meanfreqs, yerr=stdfreqs,
-    #           fmt='k',  label=r"$f_\mu$", alpha=.5)
     ax.plot(ts, meanfreqs, 'k',  label=r"$f_\mu$")
     ax.legend()
 
@@ -72,7 +69,7 @@ def main():
     xn = yn(ns, 0.005)
 
     fig = dtft(xn, fs=1)
-    fig.savefig('figs/w9-chirpstft.pdf')
+    fig.savefig('figs/w9-stft.chirpstftpdf')
     plt.show()
 
 
