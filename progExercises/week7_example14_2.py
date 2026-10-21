@@ -10,7 +10,7 @@ plt.style.use('classic')
 
 # Set LaTeX rendering and font settings
 rc('text', usetex=True)
-rc('font', family='serif', serif='Computer Modern', size=20)
+rc('font', family='serif', serif='Computer Modern', size=16)
 
 
 def periodogram(xn: np.ndarray) -> np.ndarray:
@@ -62,10 +62,10 @@ _, Sar2mod = sg.periodogram(xar2, window='hann')
 wws, Sar2welch = sg.welch(xar2)
 
 ax[0, 0].semilogy(pws[1:], Sar2[1:], label='periodogram')
-ax[0, 0].semilogy(wws, Sar2welch, lw=2, label='Welch estimator')
+ax[0, 0].semilogy(wws, Sar2welch, c='r',  lw=2, label='Welch estimator')
 
 ax[0, 1].semilogy(pws[1:], Sar2mod[1:], label='modified periodogram')
-ax[0, 1].semilogy(wws, Sar2welch, lw=2, label='Welch estimator')
+ax[0, 1].semilogy(wws, Sar2welch, c='r',  lw=2, label='Welch estimator')
 
 xar4 = ar4(ns)
 # Sar4 = periodogram(xar4)
@@ -76,10 +76,10 @@ _, Sar4mod = sg.periodogram(xar4, window='hann')
 wws, Sar4welch = sg.welch(xar4)
 
 ax[1, 0].semilogy(pws[1:], Sar4[1:], label='periodogram')
-ax[1, 0].semilogy(wws, Sar4welch, lw=2, label='Welch estimator')
+ax[1, 0].semilogy(wws, Sar4welch, c='r', lw=2, label='Welch estimator')
 
 ax[1, 1].semilogy(pws[1:], Sar4mod[1:], label='modified periodogram')
-ax[1, 1].semilogy(wws,  Sar4welch, lw=2, label='Welch estimator')
+ax[1, 1].semilogy(wws,  Sar4welch, c='r', lw=2, label='Welch estimator')
 
 
 ax[0, 0].set_title('AR2')
